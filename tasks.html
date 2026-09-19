@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main task-main">
+        <section class="task-card">
+          <div class="task-head">
+            <div>
+              <p class="eyebrow">Progress board</p>
+              <h1>Tasks Section</h1>
+            </div>
+            <div id="successMessage" class="success-message" aria-live="polite"></div>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <input type="text" id="taskTitle" placeholder="Task title" required />
+            <textarea id="taskDescription" placeholder="Task description" rows="3"></textarea>
+            <div class="task-dates">
+              <label>
+                <span>Start date</span>
+                <input type="date" id="startDate" required />
+              </label>
+              <label>
+                <span>Start time</span>
+                <input type="time" id="startTime" required />
+              </label>
+            </div>
+            <div class="task-dates">
+              <label>
+                <span>Finish date</span>
+                <input type="date" id="finishDate" required />
+              </label>
+              <label>
+                <span>Finish time</span>
+                <input type="time" id="finishTime" required />
+              </label>
+            </div>
+            <button type="submit" class="cta-button">Add Task</button>
+          </form>
+
+          <div id="taskList" class="task-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="habitScheduler.js"></script>
+    <script src="progression.js?v=20260819-daily-leaderboard"></script>
+    <script src="tasks.js?v=20260819-daily-leaderboard"></script>
+  </body>
+</html>

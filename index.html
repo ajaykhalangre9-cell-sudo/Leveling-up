@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Leveling Up" />
+    <meta name="mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <img class="hero-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+          <p class="eyebrow">A fresh start for your goals</p>
+          <h1>Welcome to Leveling Up</h1>
+          <p class="tagline">
+            Turn your daily tasks into an exciting journey of growth and self-improvement.
+          </p>
+
+          <div class="feature-grid" aria-label="Core features">
+            <article class="feature-card">
+              <h2>Set Goals</h2>
+              <p>Define what truly matters and chart your path.</p>
+            </article>
+            <article class="feature-card">
+              <h2>Add Tasks</h2>
+              <p>Break your big dreams into small steps you can win each day.</p>
+            </article>
+            <article class="feature-card">
+              <h2>Learn Skills</h2>
+              <p>Grow stronger through lessons, practice, and consistency.</p>
+            </article>
+          </div>
+
+          <div class="hero-actions">
+            <a class="cta-button" href="signup.html">Get Started</a>
+          </div>
+        </div>
+
+
+      </section>
+    </main>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js');
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

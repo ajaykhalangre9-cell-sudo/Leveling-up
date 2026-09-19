@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260811-upcoming" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Leveling Up" />
+    <meta name="mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <div class="brand-copy">
+                <h2>Leveling Up</h2>
+              </div>
+            </div>
+            <div class="brand-actions">
+              <button class="settings-btn" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">Settings</button>
+              <button class="ajay-orb-button" id="ajayOpenBtn" type="button" aria-label="Open website help chat">Help</button>
+            </div>
+          </div>
+
+          <div class="settings-panel" id="settingsPanel">
+            <button class="panel-btn" id="themeToggle">Switch to Light Theme</button>
+            <button class="panel-btn" id="changeNameBtn">Change Name</button>
+            <button class="panel-btn" id="changePasswordBtn">Change Password</button>
+            <button class="panel-btn" id="contactBtn">Contact Me</button>
+            <div class="contact-panel" id="contactPanel">
+              <a href="mailto:levelingup816@gmail.com">levelingup816@gmail.com</a>
+              <a href="https://www.instagram.com/levelingupindia?stkn=MWVzZmx6ZnM1Mnk4Yw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+            <button class="panel-btn" id="logoutBtn">Log Out</button>
+          </div>
+
+          <div class="profile-info">
+            <p class="streak-display" id="streakDisplay" aria-label="Daily streak">
+              <span class="streak-fire" aria-hidden="true">🔥</span>
+              <span><strong id="streakCount">1</strong> day streak</span>
+            </p>
+            <section class="progress-box" aria-labelledby="progressTitle">
+              <div class="progress-box-head">
+                <div>
+                  <p class="progress-label" id="progressTitle">Your progress</p>
+                  <p class="progress-level">Level <strong id="userLevel">1</strong></p>
+                </div>
+                <span class="rank-badge" id="userRank" title="Needs improvement">E Rank</span>
+              </div>
+              <div class="xp-copy"><span id="rankDescription">Needs improvement</span><span><strong id="currentXp">0</strong> / 1,000 XP</span></div>
+              <div class="xp-track" role="progressbar" aria-label="XP progress to the next level" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0">
+                <span class="xp-fill" id="xpFill"></span>
+              </div>
+              <p class="xp-hint">Complete a task to earn +10 XP</p>
+            </section>
+            <div class="profile-photo-wrap">
+              <button class="profile-photo-btn" id="profilePhotoBtn" type="button" aria-label="Add or change profile photo">
+                <img id="profilePhotoPreview" alt="" />
+                <span id="profilePhotoInitial">U</span>
+              </button>
+              <input id="profilePhotoInput" type="file" accept="image/*" hidden />
+              <button class="profile-photo-change" id="profilePhotoChangeBtn" type="button">Add photo</button>
+            </div>
+            <h3 id="userName">Loading your name…</h3>
+            <div class="quote-box" id="dailyQuote">“Small steps every day create a powerful life.”</div>
+            <section class="ongoing-box" aria-labelledby="ongoingTitle">
+              <div class="ongoing-box-head">
+                <h4 id="ongoingTitle">Currently ongoing</h4>
+                <span id="ongoingTotal">0 total</span>
+              </div>
+              <div class="ongoing-grid">
+                <a class="ongoing-stat" href="goals.html">
+                  <strong id="ongoingGoals">0</strong>
+                  <span>Goals</span>
+                </a>
+                <a class="ongoing-stat" href="tasks.html">
+                  <strong id="ongoingTasks">0</strong>
+                  <span>Tasks</span>
+                </a>
+                <a class="ongoing-stat" href="skills.html">
+                  <strong id="ongoingSkills">0</strong>
+                  <span>Skills</span>
+                </a>
+                <a class="ongoing-stat" href="habits.html">
+                  <strong id="ongoingHabits">0</strong>
+                  <span>Habits</span>
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="goals.html" class="nav-link">Goals</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="tasks.html" class="nav-link">Tasks</a>
+          <a href="habits.html" class="nav-link">Habits</a>
+          <a href="chess.html" class="nav-link">Chess</a>
+          <a href="budget.html" class="nav-link">Budget</a>
+          <a href="notes.html" class="nav-link">Notes</a>
+          <a href="bucket-list.html" class="nav-link">Bucket List</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="analysis.html" class="nav-link">Analysis</a>
+        </nav>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="welcome-card">
+          <h1 id="welcomeMessage">Welcome back</h1>
+          <p>
+            Welcome to Leveling Up platform where you can improve, prove yourself,
+            achieve your goals, complete your daily tasks and also achieve your goals.
+            In future we will add more features to this platform so stay with us.
+          </p>
+        </div>
+
+        <section class="leaderboard-card" aria-labelledby="leaderboardTitle">
+          <div class="leaderboard-card-copy">
+            <p class="eyebrow">Global standings</p>
+            <h2 id="leaderboardTitle">Leaderboard</h2>
+            <p>See the platform's top 50 players, ranked by total XP earned from completed tasks.</p>
+          </div>
+          <div class="leaderboard-card-action">
+            <p id="leaderboardPosition" aria-live="polite">Your position: —</p>
+            <button class="leaderboard-button" id="leaderboardOpenBtn" type="button">View leaderboard</button>
+          </div>
+        </section>
+
+        <div class="community-card">
+          <div>
+            <h2>Join our community</h2>
+            <p>
+              Be part of the Leveling Up community on WhatsApp and YouTube for
+              updates, guidance, and support.
+            </p>
+          </div>
+          <div class="community-actions">
+            <a
+              class="community-link"
+              href="https://chat.whatsapp.com/KmfEqmliGy24jgWxYTihYb?s=cl&p=a&ilr=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Join the Leveling Up WhatsApp community"
+            >
+              Join WhatsApp
+            </a>
+            <a
+              class="community-link"
+              href="https://www.youtube.com/@levelingupindia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Join the Leveling Up India YouTube channel"
+            >
+              Join YouTube
+            </a>
+          </div>
+        </div>
+
+        <section class="library-card" aria-labelledby="libraryTitle">
+          <div class="library-card-copy">
+            <p class="eyebrow">Learn &amp; grow</p>
+            <h2 id="libraryTitle">Leveling Up Library</h2>
+            <p>Explore the books in our library, from investing and startups to mindset, history, and meditation.</p>
+            <button class="library-button" id="libraryToggle" type="button" aria-expanded="false" aria-controls="libraryBookList">View all 52 books</button>
+          </div>
+          <img class="library-photo" src="assets/leveling-up-library.jpg" alt="Stacks of books in the Leveling Up Library" />
+          <div class="library-book-list" id="libraryBookList" hidden>
+            <h3>Books in the library</h3>
+            <ol>
+              <li>Power</li><li>Technical Analysis of the Financial Markets</li><li>Standing in the Sun</li><li>The Personal MBA</li><li>The Intelligent Investor</li><li>The Red Emperor</li><li>America's Bank</li><li>Market Wizards</li><li>Einstein: Time and Space</li><li>Beating the Street</li><li>One Up on Wall Street</li><li>Learn to Earn</li><li>The Lean Startup</li><li>Elon Musk</li><li>Thinking, Fast and Slow</li><li>Mindset</li><li>The Warren Buffett Way</li><li>$100M Leads</li><li>$100M Offers</li><li>Steve Jobs</li><li>Stock Market Crash Course</li><li>Gautam Buddha</li><li>The Subtle Art of Not Giving a F*ck</li><li>Zero to One</li><li>Power of the Master Mind</li><li>Alexander the Great</li><li>Think and Grow Rich</li><li>The Psychology of Money</li><li>How to Win Friends and Influence People</li><li>The Hard Thing About Hard Things</li><li>21st Century Business</li><li>The Alchemist</li><li>Read People Like a Book</li><li>Dark Psychology: Secret and Manipulation</li><li>Garud Jep</li><li>Janm Mrutyu Chya ...</li><li>The Prince</li><li>Copycat Marketing</li><li>Don't Believe Everything You Think</li><li>Jack Ma</li><li>Who Stole Your Dream</li><li>My Invention</li><li>Building Startup in High School</li><li>Chanakya Niti</li><li>Elon Musk</li><li>Hyperfocus</li><li>Master Your Emotions</li><li>Indian Economy</li><li>How to Start a Startup</li><li>Superintelligence</li><li>The Coming Wave</li><li>Meditation</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="upcoming-card" aria-labelledby="upcomingFeaturesTitle">
+          <p class="eyebrow">What is next</p>
+          <h2 id="upcomingFeaturesTitle">Our upcoming features &amp; products</h2>
+          <p>We are building more ways to support your personal growth.</p>
+          <ul class="upcoming-feature-list" aria-label="Upcoming features">
+            <li>Website help chat</li>
+            <li>Analysis graphs</li>
+            <li>Strikes</li>
+            <li>Leveling system</li>
+            <li>Startup Stories</li>
+            <li>Personalized advice</li>
+            <li>Learning collaborations</li>
+            <li>Personalized financial goal setting</li>
+            <li>Online book store</li>
+            <li>Journal</li>
+            <li>Diary</li>
+            <li>News</li>
+            <li>And many more</li>
+          </ul>
+        </section>
+
+        <a class="mission-card" href="mission.html" aria-label="Open Our Mission report">
+          <p class="eyebrow">Humanity first</p>
+          <h2>Our Mission</h2>
+          <p>
+            A reminder to stay humble, notice people who are struggling, and use
+            whatever we have to help someone move forward.
+          </p>
+          <span>Read the report</span>
+        </a>
+
+        <section class="dashboard-tagline" aria-label="Dream it. Plan it. Do it. Level up.">
+          <p class="tagline-kicker">Your next level</p>
+          <p class="tagline-words">
+            <span class="tagline-word tagline-word-one">Dream it.</span>
+            <span class="tagline-word tagline-word-two">Plan it.</span>
+            <span class="tagline-word tagline-word-three">Do it.</span>
+            <span class="tagline-word tagline-word-highlight">Level up.</span>
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <section class="leaderboard-modal" id="leaderboardModal" aria-hidden="true" aria-labelledby="leaderboardModalTitle" role="dialog" aria-modal="true">
+      <div class="leaderboard-modal-card">
+        <div class="leaderboard-modal-head">
+          <div>
+            <p class="eyebrow">Live progression</p>
+            <h2 id="leaderboardModalTitle">Top 50 leaderboard</h2>
+          </div>
+          <button class="modal-close" id="leaderboardCloseBtn" type="button" aria-label="Close leaderboard">&times;</button>
+        </div>
+        <p class="leaderboard-note">Ranked by total XP, then level and a stable player ID for tied scores.</p>
+        <section class="leaderboard-my-rank" id="leaderboardMyRank" aria-live="polite" hidden></section>
+        <div class="leaderboard-list" id="leaderboardList" aria-live="polite">
+          <p class="leaderboard-status">Loading leaderboard…</p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="ajay-panel" id="ajayPanel" aria-hidden="true" aria-labelledby="ajayTitle">
+      <div class="ajay-panel-head">
+        <div class="ajay-identity">
+          <div class="ajay-wave" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <p class="eyebrow">Website guide</p>
+            <h2 id="ajayTitle">✦ AJAY</h2>
+          </div>
+        </div>
+        <button class="modal-close ajay-close" id="ajayCloseBtn" type="button" aria-label="Close website help">&times;</button>
+      </div>
+
+      <div class="ajay-messages" id="ajayMessages" aria-live="polite">
+        <div class="ajay-message ajay-message-agent">
+          Hi, I am Ajay.( In progress ) — tell me what you want to level up today.
+        </div>
+      </div>
+
+      <p class="ajay-status" id="ajayStatus" role="status">Idle — type a command or use the microphone.</p>
+      <div class="ajay-quick-actions" aria-label="Popular website questions">
+        <button type="button" data-ajay-command="How do I level up?">How do I level up?</button>
+        <button type="button" data-ajay-command="How do I add a task?">Add a task</button>
+        <button type="button" data-ajay-command="How does the points system work?">Points system</button>
+        <button type="button" data-ajay-command="How do I use the budget page?">Budget help</button>
+      </div>
+      <form class="ajay-form" id="ajayForm">
+        <textarea id="ajayInput" rows="2" placeholder="Ask about the Leveling Up website" required></textarea>
+        <div class="ajay-controls">
+          <button id="ajayVoiceBtn" type="button" hidden aria-hidden="true" tabindex="-1"></button>
+          <button class="cta-button ajay-send" type="submit">Send</button>
+        </div>
+        <div class="ajay-speech-options">
+          <label>Listen in <select id="ajayRecognitionLanguage" aria-label="AJAY listening language"></select></label>
+          <label>Voice <select id="ajayVoiceSelect" aria-label="AJAY speaking voice"></select></label>
+          <label class="ajay-range-option">Speed <input id="ajayRate" type="range" min="0.7" max="1.3" step="0.1" value="1" /><output id="ajayRateValue">1.0x</output></label>
+          <label class="ajay-range-option">Pitch <input id="ajayPitch" type="range" min="0.7" max="1.3" step="0.1" value="1" /><output id="ajayPitchValue">1.0</output></label>
+        </div>
+      </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="habitScheduler.js"></script>
+    <script src="progression.js?v=20260819-daily-leaderboard"></script>
+    <script src="website-chat.js?v=20260919-help-chat"></script>
+    <script src="dashboard.js?v=20260920-maintenance"></script>
+
+<script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js');
+        });
+      }
+    </script>
+  </body>
+</html>

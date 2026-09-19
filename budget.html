@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main task-main">
+        <section class="task-card budget-card">
+          <div class="task-head">
+            <div>
+              <p class="eyebrow">Money tracker</p>
+              <h1>Budget Section</h1>
+            </div>
+            <div id="budgetStatus" class="success-message" aria-live="polite"></div>
+          </div>
+
+          <div class="budget-summary">
+            <article>
+              <span>Monthly budget</span>
+              <strong id="budgetTotal">$0.00</strong>
+            </article>
+            <article>
+              <span>Total expenses</span>
+              <strong id="expenseTotal">$0.00</strong>
+            </article>
+            <article>
+              <span>Remaining</span>
+              <strong id="remainingTotal">$0.00</strong>
+            </article>
+          </div>
+
+          <form id="budgetForm" class="task-form budget-form">
+            <div class="budget-settings-grid">
+              <label>
+                <span>Budget month</span>
+                <input type="month" id="budgetMonth" required="required" />
+              </label>
+              <label>
+                <span>Currency</span>
+                <select id="budgetCurrency">
+                  <option value="USD">USD - US Dollar</option>
+                  <option value="INR">INR - Indian Rupee</option>
+                  <option value="EUR">EUR - Euro</option>
+                  <option value="GBP">GBP - British Pound</option>
+                  <option value="AUD">AUD - Australian Dollar</option>
+                  <option value="CAD">CAD - Canadian Dollar</option>
+                  <option value="JPY">JPY - Japanese Yen</option>
+                  <option value="AED">AED - UAE Dirham</option>
+                </select>
+              </label>
+              <label>
+                <span>Monthly budget</span>
+                <input type="number" id="monthlyBudget" placeholder="5000" min="0" step="0.01" required="required" />
+              </label>
+            </div>
+            <button type="submit" class="cta-button">Save Budget</button>
+          </form>
+
+          <form id="expenseForm" class="task-form budget-form">
+            <input type="text" id="expenseTitle" placeholder="Expense name" required="required" />
+            <div class="task-dates">
+              <label>
+                <span>Category</span>
+                <select id="expenseCategory">
+                  <option value="Food">Food</option>
+                  <option value="Transport">Transport</option>
+                  <option value="Study">Study</option>
+                  <option value="Bills">Bills</option>
+                  <option value="Health">Health</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label>
+                <span>Amount</span>
+                <input type="number" id="expenseAmount" placeholder="250" min="0.01" step="0.01" required="required" />
+              </label>
+            </div>
+            <input type="date" id="expenseDate" required="required" />
+            <button type="submit" class="cta-button">Add Expense</button>
+          </form>
+
+          <section class="budget-chart-wrap" aria-labelledby="expenseChartTitle">
+            <div class="budget-chart-head">
+              <h2 id="expenseChartTitle">Expense graph</h2>
+              <span id="chartMonthLabel"></span>
+            </div>
+            <div id="expenseChart" class="expense-chart"></div>
+          </section>
+
+          <div id="expenseList" class="task-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="budget.js"></script>
+  </body>
+</html>

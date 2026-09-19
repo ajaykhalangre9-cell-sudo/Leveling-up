@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=analysis-20260816" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar">
+        <div class="sidebar-top"><div class="brand-row"><div class="brand-title"><img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" /><h2>Leveling Up</h2></div><a class="settings-btn" href="dashboard.html">Back</a></div></div>
+      </aside>
+      <main class="dashboard-main task-main analysis-main">
+        <section class="analysis-hero">
+          <p class="eyebrow">Your progress, visualized</p>
+          <h1>Analysis</h1>
+          <p>See how long your tasks, skills, and habits take — and how your XP grows each day.</p>
+        </section>
+        <div id="analysisStatus" class="success-message" aria-live="polite"></div>
+        <section class="analysis-grid">
+          <article class="analysis-card"><div class="analysis-card-head"><div><h2>Task time</h2><p>Each task added, compared by planned duration.</p></div><span class="chart-key task-key">Hours</span></div><div id="taskChart" class="chart-wrap"></div></article>
+          <article class="analysis-card"><div class="analysis-card-head"><div><h2>Skill completion time</h2><p>How many days each completed skill took.</p></div><span class="chart-key skill-key">Days</span></div><div id="skillChart" class="chart-wrap"></div></article>
+          <article class="analysis-card"><div class="analysis-card-head"><div><h2>Habit completion time</h2><p>Days from creating a habit to first completing it.</p></div><span class="chart-key habit-key">Days</span></div><div id="habitChart" class="chart-wrap"></div></article>
+          <article class="analysis-card"><div class="analysis-card-head"><div><h2>XP growth</h2><p>XP earned each day.</p></div><span class="chart-key xp-key">XP</span></div><div id="xpChart" class="chart-wrap"></div></article>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="analysis.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar notes-sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main notes-main">
+        <section class="notes-card">
+          <div class="task-head">
+            <div>
+              <p class="eyebrow">Your space</p>
+              <h1>Notes</h1>
+              <p class="notes-intro">Capture ideas, plans, and reminders in your own colors.</p>
+            </div>
+            <div id="notesStatus" class="success-message" aria-live="polite"></div>
+          </div>
+
+          <form class="notes-form note-editor-yellow" id="noteForm">
+            <input id="noteName" type="text" maxlength="60" placeholder="Note name (for example, Study plan)" required />
+            <input id="noteTitle" type="text" maxlength="100" placeholder="Title" required />
+            <textarea id="noteContent" rows="7" maxlength="4000" placeholder="Write your note here…" required></textarea>
+            <div class="notes-tools">
+              <div class="color-picker" aria-label="Choose note color">
+                <span>Color</span>
+                <button type="button" class="color-choice selected" data-color="yellow" aria-label="Yellow" title="Yellow"></button>
+                <button type="button" class="color-choice" data-color="pink" aria-label="Pink" title="Pink"></button>
+                <button type="button" class="color-choice" data-color="purple" aria-label="Purple" title="Purple"></button>
+                <button type="button" class="color-choice" data-color="blue" aria-label="Blue" title="Blue"></button>
+                <button type="button" class="color-choice" data-color="green" aria-label="Green" title="Green"></button>
+                <button type="button" class="color-choice" data-color="orange" aria-label="Orange" title="Orange"></button>
+                <button type="button" class="color-choice" data-color="red" aria-label="Red" title="Red"></button>
+                <button type="button" class="color-choice" data-color="teal" aria-label="Teal" title="Teal"></button>
+                <button type="button" class="color-choice" data-color="indigo" aria-label="Indigo" title="Indigo"></button>
+                <button type="button" class="color-choice" data-color="peach" aria-label="Peach" title="Peach"></button>
+                <button type="button" class="color-choice" data-color="gray" aria-label="Gray" title="Gray"></button>
+                <label class="custom-color-label" title="Choose any color">Custom <input id="noteCustomColor" type="color" value="#fef08a" aria-label="Choose a custom note color" /></label>
+              </div>
+              <div class="emoji-picker" aria-label="Add emoji to note">
+                <span>Emoji</span>
+                <button type="button" data-emoji="✨">✨</button>
+                <button type="button" data-emoji="💡">💡</button>
+                <button type="button" data-emoji="📌">📌</button>
+                <button type="button" data-emoji="🎯">🎯</button>
+                <button type="button" data-emoji="❤️">❤️</button>
+                <button type="button" data-emoji="😊">😊</button>
+                <button type="button" data-emoji="🔥">🔥</button>
+                <button type="button" data-emoji="🌟">🌟</button>
+                <button type="button" data-emoji="✅">✅</button>
+                <button type="button" data-emoji="📚">📚</button>
+                <button type="button" data-emoji="🧠">🧠</button>
+                <button type="button" data-emoji="💪">💪</button>
+                <button type="button" data-emoji="🌱">🌱</button>
+                <button type="button" data-emoji="🚀">🚀</button>
+                <button type="button" data-emoji="☀️">☀️</button>
+                <button type="button" data-emoji="🎉">🎉</button>
+                <button type="button" data-emoji="⚡">⚡</button>
+              </div>
+            </div>
+            <button type="submit" class="cta-button">Save Note</button>
+          </form>
+
+          <div id="notesList" class="notes-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="notes.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main task-main">
+        <section class="task-card">
+          <div class="task-head">
+            <div>
+              <p class="eyebrow">Community space</p>
+              <h1>Blog Section</h1>
+            </div>
+            <div id="blogStatus" class="success-message" aria-live="polite"></div>
+          </div>
+
+          <form id="blogForm" class="task-form">
+            <input type="text" id="blogTitle" placeholder="Blog title" required />
+            <textarea id="blogDescription" placeholder="Write your blog here" rows="4"></textarea>
+            <button type="submit" class="cta-button">Publish Blog</button>
+          </form>
+
+          <div id="blogList" class="task-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="theme.js"></script>
+    <script src="blog.js"></script>
+  </body>
+</html>

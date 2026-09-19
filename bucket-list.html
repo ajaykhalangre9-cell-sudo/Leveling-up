@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bucket List - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260811-bucket-list-2" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main task-main bucket-main">
+        <section class="task-card bucket-card">
+          <div class="bucket-hero">
+            <div>
+              <p class="eyebrow">Life planner</p>
+              <h1>My Bucket List</h1>
+              <p>Dream big. Experience more. Make it happen.</p>
+            </div>
+            <button class="cta-button bucket-add-trigger" id="openBucketForm" type="button">+ Add a bucket list</button>
+          </div>
+
+          <section class="bucket-stats" aria-label="Bucket list statistics">
+            <article><span>Total items</span><strong id="totalItems">0</strong></article>
+            <article><span>Completed</span><strong id="completedItems">0</strong></article>
+            <article><span>Not completed</span><strong id="remainingItems">0</strong></article>
+          </section>
+
+          <form id="bucketForm" class="task-form bucket-form" hidden>
+            <div class="task-head">
+              <h2>Add a bucket list item</h2>
+              <button id="closeBucketForm" class="text-button" type="button">Cancel</button>
+            </div>
+            <label class="bucket-field" for="bucketTitle"><span>Title</span>
+              <input id="bucketTitle" type="text" maxlength="120" placeholder="What do you want to experience?" required />
+            </label>
+            <label class="bucket-field" for="bucketDescription"><span>Description <em>(optional)</em></span>
+              <textarea id="bucketDescription" rows="3" maxlength="400" placeholder="Add a little more detail about this dream..."></textarea>
+            </label>
+            <div class="task-dates">
+              <label class="bucket-category-field"><span>Category</span>
+                <select id="bucketCategory" required>
+                  <option value="" selected disabled>Choose a category</option>
+                  <option value="Travel">Travel</option><option value="Education">Education</option><option value="Career">Career</option><option value="Fitness">Fitness</option><option value="Personal Growth">Personal Growth</option><option value="Finance">Finance</option><option value="Creativity">Creativity</option><option value="Technology">Technology</option><option value="Relationship">Relationship</option><option value="Lifestyle">Lifestyle</option><option value="Others">Others</option>
+                </select>
+              </label>
+              <label><span>Target date <em>(optional)</em></span><input id="bucketTargetDate" type="date" /></label>
+            </div>
+            <button class="cta-button" type="submit">Add to my list</button>
+          </form>
+
+          <div class="bucket-list-head"><h2>Your dreams</h2><span id="bucketStatus" class="success-message" aria-live="polite"></span></div>
+          <div id="bucketList" class="task-list"></div>
+        </section>
+      </main>
+    </div>
+    <script src="theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="bucket-list.js"></script>
+  </body>
+</html>

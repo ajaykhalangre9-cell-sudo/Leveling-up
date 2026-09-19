@@ -1,0 +1,18 @@
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build/output folders
+dist/
+build/
+
+# Deployment/tool caches
+.vercel/
+
+# Operating system files
+.DS_Store
+Thumbs.db

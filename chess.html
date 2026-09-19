@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260810-chess-fit" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <div class="app-shell task-page chess-page">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row">
+            <div class="brand-title">
+              <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+              <h2>Leveling Up</h2>
+            </div>
+            <a class="settings-btn" href="dashboard.html">Back</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main chess-main">
+        <section class="task-card chess-card">
+          <div class="task-head chess-head">
+            <div>
+              <p class="eyebrow">Strategy room</p>
+              <h1>Chess</h1>
+            </div>
+            <div id="chessStatus" class="success-message" aria-live="polite">Loading board...</div>
+          </div>
+
+          <div class="chess-layout">
+            <section class="chess-board-panel" aria-label="Chess board">
+              <div class="chess-board-shell">
+                <div class="chess-board" id="chessBoard"></div>
+              </div>
+              <div class="chess-captured" id="capturedPieces"></div>
+            </section>
+
+            <aside class="chess-controls" aria-label="Chess options">
+              <div class="chess-control-group">
+                <label for="gameMode">Mode</label>
+                <select id="gameMode">
+                  <option value="ai">Play with AI</option>
+                  <option value="two">Two players</option>
+                </select>
+              </div>
+
+              <div class="chess-control-group" id="difficultyGroup">
+                <label for="aiDifficulty">AI level</label>
+                <select id="aiDifficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+
+              <div class="chess-control-group">
+                <label for="playerColor">Your color</label>
+                <select id="playerColor">
+                  <option value="w" selected>White</option>
+                  <option value="b">Black</option>
+                </select>
+              </div>
+
+              <div class="chess-control-group">
+                <label for="boardTheme">Board</label>
+                <select id="boardTheme">
+                  <option value="classic">Classic</option>
+                  <option value="ocean">Ocean</option>
+                  <option value="forest">Forest</option>
+                  <option value="mono">Mono</option>
+                </select>
+              </div>
+
+              <div class="chess-control-group">
+                <label for="pieceStyle">Pieces</label>
+                <select id="pieceStyle">
+                  <option value="solid">Solid</option>
+                  <option value="glass">Glass</option>
+                </select>
+              </div>
+
+              <label class="chess-toggle">
+                <input id="showLegalMoves" type="checkbox" checked />
+                <span>Show legal moves</span>
+              </label>
+
+              <label class="chess-toggle">
+                <input id="showCoordinates" type="checkbox" checked />
+                <span>Show coordinates</span>
+              </label>
+
+              <div class="chess-actions">
+                <button class="panel-btn" id="newGameBtn" type="button">New game</button>
+                <button class="panel-btn" id="undoMoveBtn" type="button">Undo</button>
+                <button class="panel-btn" id="hintBtn" type="button">Hint</button>
+                <button class="panel-btn" id="flipBoardBtn" type="button">Flip</button>
+              </div>
+
+              <div class="chess-history" id="moveHistory" aria-label="Move history"></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="chess-win-modal" id="chessWinModal" aria-hidden="true">
+      <div>
+        <p class="eyebrow">Checkmate</p>
+        <h2 id="winTitle">Congratulations</h2>
+        <p id="winText">You won the match.</p>
+        <button class="cta-button" id="playAgainBtn" type="button">Play again</button>
+      </div>
+    </div>
+    <canvas class="fireworks-canvas" id="fireworksCanvas" aria-hidden="true"></canvas>
+
+    <script src="theme.js"></script>
+    <script src="chess.js?v=20260810-chess-fallback"></script>
+  </body>
+</html>

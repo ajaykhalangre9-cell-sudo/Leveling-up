@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Leveling Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/leveling-up-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/leveling-up-192.png" />
+  </head>
+  <body>
+    <main class="page-shell auth-page">
+      <section class="auth-card">
+        <div class="auth-header">
+          <img class="auth-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
+          <p class="eyebrow">Welcome back</p>
+          <h1>Login to your account</h1>
+          <p class="auth-subtitle">
+            Continue building your habits and growing with every step.
+          </p>
+        </div>
+
+        <button class="google-btn" type="button">
+          <span class="google-mark">G</span>
+          Continue with Google
+        </button>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <form class="auth-form">
+          <label>
+            <span>Email Address</span>
+            <input type="email" placeholder="Enter your email" required />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input type="password" placeholder="Enter your password" required />
+          </label>
+
+          <button class="cta-button auth-submit" type="submit">Login</button>
+        </form>
+
+        <p class="auth-switch">
+          New here?
+          <a href="signup.html">Create an account</a>
+        </p>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
