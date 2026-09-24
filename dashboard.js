@@ -48,6 +48,68 @@ document.addEventListener('DOMContentLoaded', async () => {
   const leaderboardList = document.getElementById('leaderboardList');
   const leaderboardMyRank = document.getElementById('leaderboardMyRank');
 
+  // These core account controls are intentionally wired before every optional
+  // dashboard feature. A failure in charts, speech, or live data must never
+  // leave a person unable to update their account.
+  changePasswordBtn?.addEventListener('click', async () => {
+    if (!window.supabaseClient) {
+      alert('Password changes require an active connection. Please try again when you are online.');
+      return;
+    }
+
+    const newPassword = prompt('Enter a new password (at least 6 characters):');
+    if (newPassword === null) return;
+    if (newPassword.length < 6) {
+      alert('Your new password must be at least 6 characters long.');
+      return;
+    }
+
+    const confirmation = prompt('Confirm your new password:');
+    if (confirmation === null) return;
+    if (newPassword !== confirmation) {
+      alert('The passwords do not match. Please try again.');
+      return;
+    }
+
+    changePasswordBtn.disabled = true;
+    try {
+      const { error } = await window.supabaseClient.auth.updateUser({ password: newPassword });
+      if (error) throw error;
+      alert('Your password has been changed.');
+    } catch (error) {
+      alert(error.message || 'Unable to change your password. Please sign in again and retry.');
+    } finally {
+      changePasswordBtn.disabled = false;
+    }
+  });
+
+  changeNameBtn?.addEventListener('click', async () => {
+    const currentName = localStorage.getItem('levelingUpUserName') || 'User';
+    const newName = prompt('Enter your new name:', currentName)?.trim();
+    if (!newName) return;
+
+    try {
+      if (window.supabaseClient) {
+        const { data: { user }, error: userError } = await window.supabaseClient.auth.getUser();
+        if (userError) throw userError;
+        if (!user) throw new Error('Your session has expired. Please sign in again.');
+
+        const { error } = await window.supabaseClient.from('profiles').upsert({
+          user_id: user.id,
+          full_name: newName
+        }, { onConflict: 'user_id' });
+        if (error) throw error;
+      }
+
+      localStorage.setItem('levelingUpUserName', newName);
+      userNameElement.textContent = newName;
+      welcomeMessage.textContent = `Welcome back, ${newName}`;
+      profilePhotoInitial.textContent = newName.charAt(0).toUpperCase();
+    } catch (error) {
+      alert(error.message || 'Unable to change your name. Please try again.');
+    }
+  });
+
   const quotes = [
     '“Small steps every day create a powerful life.”',
     '“Consistency turns dreams into reality.”',
@@ -654,39 +716,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
   });
 
-  changePasswordBtn?.addEventListener('click', async () => {
-    if (!window.supabaseClient) {
-      alert('Password changes require an active connection. Please try again when you are online.');
-      return;
-    }
-
-    const newPassword = prompt('Enter a new password (at least 6 characters):');
-    if (newPassword === null) return;
-
-    if (newPassword.length < 6) {
-      alert('Your new password must be at least 6 characters long.');
-      return;
-    }
-
-    const confirmation = prompt('Confirm your new password:');
-    if (confirmation === null) return;
-    if (newPassword !== confirmation) {
-      alert('The passwords do not match. Please try again.');
-      return;
-    }
-
-    changePasswordBtn.disabled = true;
-    try {
-      const { error } = await window.supabaseClient.auth.updateUser({ password: newPassword });
-      if (error) throw error;
-      alert('Your password has been changed.');
-    } catch (error) {
-      alert(error.message || 'Unable to change your password. Please sign in again and retry.');
-    } finally {
-      changePasswordBtn.disabled = false;
-    }
-  });
-
   const openProfilePhotoPicker = () => {
     profilePhotoInput?.click();
   };
@@ -781,31 +810,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } finally {
       profilePhotoInput.value = '';
     }
-  });
-
-  changeNameBtn?.addEventListener('click', async () => {
-    const currentName = localStorage.getItem('levelingUpUserName') || 'User';
-    const newName = prompt('Enter your new name:', currentName)?.trim();
-
-    if (!newName) return;
-
-    if (window.supabaseClient) {
-      const { data: { user } } = await window.supabaseClient.auth.getUser();
-
-      if (user) {
-        const { error } = await window.supabaseClient.from('profiles').upsert({
-          user_id: user.id,
-          full_name: newName
-        }, { onConflict: 'user_id' });
-
-        if (error) {
-          alert(error.message);
-          return;
-        }
-      }
-    }
-
-    updateDisplayedName(newName);
   });
 
   contactBtn?.addEventListener('click', () => {
