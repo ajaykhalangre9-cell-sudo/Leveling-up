@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leveling-up-v50';
+const CACHE_NAME = 'leveling-up-v51';
 const APP_SHELL = [
   './',
   './index.html',
@@ -64,7 +64,19 @@ self.addEventListener('fetch', (event) => {
     || ['.html', '.css', '.js'].some((extension) => requestUrl.pathname.endsWith(extension));
 
   if (isFreshAsset) {
-    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+    // HTML references versioned files (for example styles.css?v=...). The app
+    // shell stores their canonical URLs, so fall back to that URL when offline.
+    // Without this, an installed app can render unstyled HTML after a refresh.
+    event.respondWith(
+      fetch(event.request).catch(async () => {
+        const exactMatch = await caches.match(event.request);
+        if (exactMatch) return exactMatch;
+
+        const canonicalUrl = new URL(event.request.url);
+        canonicalUrl.search = '';
+        return caches.match(canonicalUrl.toString());
+      })
+    );
     return;
   }
 

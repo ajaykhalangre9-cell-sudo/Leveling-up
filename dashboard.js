@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  await window.levelingUpHabitScheduler?.syncDailyHabits();
+  // Do not block the dashboard setup on a network/database task. In particular,
+  // the settings buttons must remain usable if habit synchronization is slow or
+  // unavailable on a mobile connection.
+  window.levelingUpHabitScheduler?.syncDailyHabits().catch((error) => {
+    console.warn('Daily habit synchronization failed:', error);
+  });
 
   const settingsBtn = document.getElementById('settingsBtn');
   const settingsPanel = document.getElementById('settingsPanel');
@@ -649,8 +654,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
   });
 
-  changePasswordBtn?.addEventListener('click', () => {
-    alert('Password change feature coming soon.');
+  changePasswordBtn?.addEventListener('click', async () => {
+    if (!window.supabaseClient) {
+      alert('Password changes require an active connection. Please try again when you are online.');
+      return;
+    }
+
+    const newPassword = prompt('Enter a new password (at least 6 characters):');
+    if (newPassword === null) return;
+
+    if (newPassword.length < 6) {
+      alert('Your new password must be at least 6 characters long.');
+      return;
+    }
+
+    const confirmation = prompt('Confirm your new password:');
+    if (confirmation === null) return;
+    if (newPassword !== confirmation) {
+      alert('The passwords do not match. Please try again.');
+      return;
+    }
+
+    changePasswordBtn.disabled = true;
+    try {
+      const { error } = await window.supabaseClient.auth.updateUser({ password: newPassword });
+      if (error) throw error;
+      alert('Your password has been changed.');
+    } catch (error) {
+      alert(error.message || 'Unable to change your password. Please sign in again and retry.');
+    } finally {
+      changePasswordBtn.disabled = false;
+    }
   });
 
   const openProfilePhotoPicker = () => {
@@ -714,7 +748,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { error: profileError } = await window.supabaseClient.from('profiles').upsert({
       user_id: user.id,
       avatar_url: avatarUrl
-    });
+    }, { onConflict: 'user_id' });
 
     if (profileError) throw profileError;
 
@@ -762,7 +796,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const { error } = await window.supabaseClient.from('profiles').upsert({
           user_id: user.id,
           full_name: newName
-        });
+        }, { onConflict: 'user_id' });
 
         if (error) {
           alert(error.message);
