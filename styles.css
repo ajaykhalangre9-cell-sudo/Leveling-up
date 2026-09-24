@@ -661,26 +661,34 @@ h1 {
 }
 
 .ajay-orb-button {
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
   border: 1px solid rgba(110, 231, 249, 0.42);
   border-radius: 50%;
   padding: 0;
   display: grid;
   place-items: center;
-  background:
-    radial-gradient(circle at 50% 50%, #000 0 32%, rgba(3, 7, 18, 0.98) 34% 48%, rgba(110, 231, 249, 0.8) 49% 52%, rgba(139, 92, 246, 0.55) 53% 62%, rgba(255, 255, 255, 0.09) 63% 100%);
-  color: #f8fafc;
+  overflow: hidden;
+  background: #020617;
   cursor: pointer;
-  font-size: 0.72rem;
-  font-weight: 800;
-  box-shadow: 0 0 22px rgba(110, 231, 249, 0.2);
+  box-shadow: 0 0 0 3px rgba(110, 231, 249, 0.1), 0 0 22px rgba(110, 231, 249, 0.34);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.ajay-orb-button img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 49% 20%;
+  transform: scale(1.45);
 }
 
 .ajay-orb-button:hover {
+  transform: translateY(-2px) scale(1.04);
   border-color: rgba(110, 231, 249, 0.7);
-  box-shadow: 0 0 30px rgba(110, 231, 249, 0.32);
+  box-shadow: 0 0 0 4px rgba(110, 231, 249, 0.14), 0 0 30px rgba(110, 231, 249, 0.46);
 }
 
 .ajay-orb-button:focus-visible {
@@ -3214,7 +3222,6 @@ body.light-theme .chess-win-modal > div {
     width: 42px;
     height: 42px;
     flex-basis: 42px;
-    font-size: 0.68rem;
   }
 
   .ajay-panel {
@@ -3270,8 +3277,9 @@ body.light-theme .chess-win-modal > div {
   }
 
   .profile-photo-change {
-    width: fit-content;
-    max-width: 100%;
+    right: calc(50% - 49px);
+    width: 34px;
+    height: 34px;
   }
 
   .quote-box {

@@ -280,14 +280,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       profilePhotoPreview.src = photoDataUrl;
       profilePhotoPreview.hidden = false;
       profilePhotoInitial.hidden = true;
-      profilePhotoChangeBtn.textContent = 'Change photo';
+      profilePhotoChangeBtn.setAttribute('aria-label', 'Generate or change profile photo');
+      profilePhotoChangeBtn.title = 'Generate or change profile photo';
       return;
     }
 
     profilePhotoPreview.removeAttribute('src');
     profilePhotoPreview.hidden = true;
     profilePhotoInitial.hidden = false;
-    profilePhotoChangeBtn.textContent = 'Add photo';
+    profilePhotoChangeBtn.setAttribute('aria-label', 'Generate or change profile photo');
+    profilePhotoChangeBtn.title = 'Generate or change profile photo';
   };
 
   profilePhotoInitial.textContent = savedName.trim().charAt(0).toUpperCase() || 'U';
