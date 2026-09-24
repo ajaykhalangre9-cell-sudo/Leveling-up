@@ -28,7 +28,9 @@
               </div>
             </div>
             <div class="brand-actions">
-              <button class="settings-btn" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">Settings</button>
+              <button class="settings-btn" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Open settings" title="Settings">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8.4 4a6.9 6.9 0 0 0-.1-1.1l2-1.6-2-3.5-2.4 1a8.5 8.5 0 0 0-1.9-1.1L15.6 3h-4l-.4 2.7a8.5 8.5 0 0 0-1.9 1.1l-2.4-1-2 3.5 2 1.6A6.9 6.9 0 0 0 6.8 12c0 .4 0 .8.1 1.1l-2 1.6 2 3.5 2.4-1a8.5 8.5 0 0 0 1.9 1.1l.4 2.7h4l.4-2.7a8.5 8.5 0 0 0 1.9-1.1l2.4 1 2-3.5-2-1.6c.1-.3.1-.7.1-1.1Z" /></svg>
+              </button>
               <button class="ajay-orb-button" id="ajayOpenBtn" type="button" aria-label="Open website help chat">Help</button>
             </div>
           </div>
@@ -40,7 +42,6 @@
             <button class="panel-btn" id="contactBtn">Contact Me</button>
             <div class="contact-panel" id="contactPanel">
               <a href="mailto:levelingup816@gmail.com">levelingup816@gmail.com</a>
-              <a href="https://www.instagram.com/levelingupindia?stkn=MWVzZmx6ZnM1Mnk4Yw==" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
             <button class="panel-btn" id="logoutBtn">Log Out</button>
           </div>
@@ -70,7 +71,9 @@
                 <span id="profilePhotoInitial">U</span>
               </button>
               <input id="profilePhotoInput" type="file" accept="image/*" hidden />
-              <button class="profile-photo-change" id="profilePhotoChangeBtn" type="button">Add photo</button>
+              <button class="profile-photo-change" id="profilePhotoChangeBtn" type="button" aria-label="Add or change profile photo" title="Add or change profile photo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 3.3 6 6L9 21H3v-6L14.7 3.3Zm0 2.8L5 15.8V19h3.2l9.7-9.7-3.2-3.2Zm4.6-1.4 1.4 1.4a2 2 0 0 1 0 2.8l-1.5 1.5L16 7.2l1.5-1.5a2 2 0 0 1 1.8-.6Z" /></svg>
+              </button>
             </div>
             <h3 id="userName">Loading your name…</h3>
             <div class="quote-box" id="dailyQuote">“Small steps every day create a powerful life.”</div>
@@ -102,17 +105,17 @@
         </div>
 
         <nav class="sidebar-nav">
-          <a href="goals.html" class="nav-link">Goals</a>
-          <a href="blog.html" class="nav-link">Blog</a>
-          <a href="skills.html" class="nav-link">Skills</a>
-          <a href="tasks.html" class="nav-link">Tasks</a>
-          <a href="habits.html" class="nav-link">Habits</a>
-          <a href="chess.html" class="nav-link">Chess</a>
-          <a href="budget.html" class="nav-link">Budget</a>
-          <a href="notes.html" class="nav-link">Notes</a>
-          <a href="bucket-list.html" class="nav-link">Bucket List</a>
-          <a href="products.html" class="nav-link">Products</a>
-          <a href="analysis.html" class="nav-link">Analysis</a>
+          <a href="goals.html" class="nav-link nav-goals"><span class="nav-icon">◎</span><strong>Goals</strong><small>Set &amp; achieve</small><b>+</b></a>
+          <a href="tasks.html" class="nav-link nav-tasks"><span class="nav-icon">✓</span><strong>Tasks</strong><small>Get things done</small><b>+</b></a>
+          <a href="habits.html" class="nav-link nav-habits"><span class="nav-icon">▥</span><strong>Habits</strong><small>Build consistency</small><b>+</b></a>
+          <a href="skills.html" class="nav-link nav-skills"><span class="nav-icon">▰</span><strong>Skills</strong><small>Learn &amp; grow</small><b>+</b></a>
+          <a href="blog.html" class="nav-link nav-blog"><span class="nav-icon">✦</span><strong>Blog</strong><small>Share ideas</small><b>+</b></a>
+          <a href="budget.html" class="nav-link nav-budget"><span class="nav-icon">₹</span><strong>Budget</strong><small>Plan smarter</small><b>+</b></a>
+          <a href="notes.html" class="nav-link nav-notes"><span class="nav-icon">✎</span><strong>Notes</strong><small>Capture thoughts</small><b>+</b></a>
+          <a href="bucket-list.html" class="nav-link nav-bucket"><span class="nav-icon">☆</span><strong>Bucket List</strong><small>Dream bigger</small><b>+</b></a>
+          <a href="chess.html" class="nav-link nav-chess"><span class="nav-icon">♞</span><strong>Chess</strong><small>Train your mind</small><b>+</b></a>
+          <a href="products.html" class="nav-link nav-products"><span class="nav-icon">◇</span><strong>Products</strong><small>Explore tools</small><b>+</b></a>
+          <a href="analysis.html" class="nav-link nav-analysis"><span class="nav-icon">▤</span><strong>Analysis</strong><small>See progress</small><b>+</b></a>
         </nav>
       </aside>
 
@@ -165,6 +168,7 @@
             >
               Join YouTube
             </a>
+            <a class="community-link" href="https://www.instagram.com/levelingupindia?stkn=MWVzZmx6ZnM1Mnk4Yw==" target="_blank" rel="noopener noreferrer" aria-label="Follow Leveling Up India on Instagram">Follow Instagram</a>
           </div>
         </div>
 
@@ -249,14 +253,10 @@
     <section class="ajay-panel" id="ajayPanel" aria-hidden="true" aria-labelledby="ajayTitle">
       <div class="ajay-panel-head">
         <div class="ajay-identity">
-          <div class="ajay-wave" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <img class="help-guide-avatar" src="assets/help/help-guide-character.jpeg" alt="Leveling Up Help guide" />
           <div>
             <p class="eyebrow">Website guide</p>
-            <h2 id="ajayTitle">✦ AJAY</h2>
+            <h2 id="ajayTitle">✦ Help</h2>
           </div>
         </div>
         <button class="modal-close ajay-close" id="ajayCloseBtn" type="button" aria-label="Close website help">&times;</button>
@@ -264,7 +264,7 @@
 
       <div class="ajay-messages" id="ajayMessages" aria-live="polite">
         <div class="ajay-message ajay-message-agent">
-          Hi, I am Ajay.( In progress ) — tell me what you want to level up today.
+          Hi, I’m Help — tell me what you want to level up today.
         </div>
       </div>
 

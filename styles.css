@@ -548,6 +548,17 @@ h1 {
   box-shadow: 0 12px 28px rgba(110, 231, 249, 0.16);
 }
 
+.settings-btn svg {
+  filter: drop-shadow(0 0 5px rgba(165, 243, 252, 0.58));
+  transition: transform 420ms cubic-bezier(.2, .8, .2, 1), filter 180ms ease;
+}
+
+.settings-btn:hover svg,
+.settings-btn[aria-expanded="true"] svg {
+  transform: rotate(60deg) scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(165, 243, 252, 0.82));
+}
+
 .settings-panel {
   margin-top: 4px;
   padding: 10px;
@@ -883,9 +894,121 @@ h1 {
 }
 
 .sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+/* Dark, two-up feature cards for the dashboard navigation. */
+.sidebar-nav .nav-link {
+  position: relative;
+  min-height: 142px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(110, 231, 249, 0.32);
+  border-radius: 18px;
+  padding: 18px 14px;
+  background: radial-gradient(circle at 82% 15%, rgba(56, 189, 248, 0.16), transparent 34%), linear-gradient(145deg, #0b1728, #07111e);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06), 0 12px 26px rgba(0, 0, 0, 0.22);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link:focus-visible {
+  transform: translateY(-3px);
+  border-color: #67e8f9;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 17px 32px rgba(34, 211, 238, 0.16);
+  outline: none;
+}
+
+.sidebar-nav .nav-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #67e8f9;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.sidebar-nav .nav-link strong { font-size: 1rem; color: #f8fafc; }
+.sidebar-nav .nav-link small { color: #94a3b8; font-size: 0.75rem; font-weight: 600; }
+.sidebar-nav .nav-link b {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #67e8f9;
+  color: #062033;
+  font-size: 1.2rem;
+}
+
+.sidebar-nav .nav-goals { border-color: rgba(52, 211, 153, 0.72); background: radial-gradient(circle at 82% 15%, rgba(52, 211, 153, 0.22), transparent 34%), linear-gradient(145deg, #08211e, #07111e); }
+.sidebar-nav .nav-goals .nav-icon, .sidebar-nav .nav-goals b { color: #052e26; background: #6ee7b7; }
+.sidebar-nav .nav-habits { border-color: rgba(192, 132, 252, 0.72); background: radial-gradient(circle at 82% 15%, rgba(192, 132, 252, 0.22), transparent 34%), linear-gradient(145deg, #1d1035, #0d1023); }
+.sidebar-nav .nav-habits .nav-icon, .sidebar-nav .nav-habits b { color: #31105b; background: #d8b4fe; }
+.sidebar-nav .nav-skills { border-color: rgba(251, 191, 36, 0.72); background: radial-gradient(circle at 82% 15%, rgba(251, 191, 36, 0.2), transparent 34%), linear-gradient(145deg, #261b0a, #11101a); }
+.sidebar-nav .nav-skills .nav-icon, .sidebar-nav .nav-skills b { color: #422006; background: #fde68a; }
+.sidebar-nav .nav-budget { border-color: rgba(45, 212, 191, 0.62); }
+.sidebar-nav .nav-blog { border-color: rgba(129, 140, 248, 0.64); }
+
+.settings-btn {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.settings-btn svg,
+.profile-photo-change svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+}
+
+.profile-photo-wrap { position: relative; }
+.profile-photo-change {
+  position: absolute;
+  right: calc(50% - 59px);
+  bottom: 0;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 2px solid #0b1220;
+  background: #67e8f9;
+  color: #062033;
+}
+
+.profile-photo-change:hover { background: #a5f3fc; }
+
+.profile-photo-change svg {
+  width: 18px;
+  height: 18px;
+}
+
+.help-guide-avatar {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border: 2px solid rgba(56, 189, 248, 0.8);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 48% 22%;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.5);
 }
 
 .dashboard-main {
@@ -2931,11 +3054,7 @@ body.light-theme .chess-win-modal > div {
     flex: 1 1 auto;
   }
 
-  .sidebar-nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
-    width: 100%;
-  }
+  .sidebar-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .sidebar-nav .nav-link {
     text-align: center;
