@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leveling-up-v52';
+const CACHE_NAME = 'leveling-up-v53';
 const APP_SHELL = [
   './',
   './index.html',
@@ -44,7 +44,8 @@ const APP_SHELL = [
   './assets/icons/leveling-up-512.png',
   './assets/products/hologram-watch/hologram-watch-community.jpeg',
   './assets/products/hologram-watch/hologram-watch-vision.jpeg',
-  './assets/products/hologram-watch/hologram-watch-interface.jpeg'
+  './assets/products/hologram-watch/hologram-watch-interface.jpeg',
+  './assets/products/custom-frames-posters.jpeg'
 ];
 
 self.addEventListener('install', (event) => {

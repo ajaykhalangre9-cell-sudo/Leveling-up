@@ -985,6 +985,18 @@ h1 {
   fill: currentColor;
 }
 
+/* Back links on secondary pages must retain their full label without escaping the header. */
+.brand-row > .settings-btn[href] {
+  width: auto;
+  min-width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  white-space: nowrap;
+}
+
 .profile-photo-wrap { position: relative; }
 .profile-photo-change {
   position: absolute;
@@ -2469,10 +2481,33 @@ h1 {
   background: rgba(255, 211, 54, 0.08);
 }
 
+.frame-product {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 44px);
+  margin-top: clamp(28px, 5vw, 48px);
+  padding-top: clamp(24px, 4vw, 40px);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.frame-product-media, .frame-product-copy { min-width: 0; }
+.frame-product-media img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border: 1px solid rgba(110,231,249,.35); border-radius: 14px; background: #171717; transform: perspective(1100px) rotateX(1.5deg) rotateY(2deg); box-shadow: -14px 20px 34px rgba(0,0,0,.34), 3px -3px 10px rgba(110,231,249,.08); transition: transform 220ms ease, box-shadow 220ms ease; }
+.frame-product-copy { display: grid; gap: 14px; color: var(--muted); line-height: 1.7; }
+.frame-product-copy h2, .frame-product-copy h3, .frame-product-copy p, .frame-product-copy ul { margin: 0; overflow-wrap: anywhere; }
+.frame-product-copy h2, .frame-product-copy h3, .frame-product-copy strong { color: var(--text); }
+.frame-product-copy ul { display: grid; gap: 10px; padding-left: 1.25rem; }
+.frame-product-note { padding: 16px; border-left: 3px solid #67e8f9; background: rgba(110,231,249,.08); }
+
+@media (hover: hover) and (pointer: fine) {
+  .frame-product-media img:hover { transform: perspective(1100px) translateY(-8px) rotateX(0) rotateY(0); box-shadow: -18px 28px 42px rgba(0,0,0,.42), 4px -4px 14px rgba(110,231,249,.16); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .product-gallery img,
   .mug-product-media img,
-  .leveler-card-media img {
+  .leveler-card-media img,
+  .frame-product-media img {
     transform: none;
     transition: none;
   }
@@ -3538,6 +3573,10 @@ body.light-theme .chess-win-modal > div {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  .frame-product { grid-template-columns: 1fr; gap: 20px; }
+  .frame-product-media { order: -1; }
+  .frame-product-media img { width: min(100%, 460px); margin: 0 auto; }
 
   .leveler-card-media {
     order: -1;
