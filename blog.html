@@ -21,28 +21,48 @@
               <img class="brand-logo" src="assets/icons/leveling-up-192.png" alt="Leveling Up logo" />
               <h2>Leveling Up</h2>
             </div>
-            <a class="settings-btn" href="dashboard.html">Back</a>
+            <a class="settings-btn back-btn" href="dashboard.html" aria-label="Back to dashboard">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 5.3-6.7 6.7 6.7 6.7 1.4-1.4-5.3-5.3 5.3-5.3-1.4-1.4Z" /></svg>
+              <span>Back</span>
+            </a>
           </div>
         </div>
       </aside>
 
       <main class="dashboard-main task-main">
-        <section class="task-card">
-          <div class="task-head">
+        <section class="task-card blog-card">
+          <div class="blog-hero">
             <div>
-              <p class="eyebrow">Community space</p>
-              <h1>Blog Section</h1>
+              <p class="eyebrow">Leveling Up community</p>
+              <h1>Stories that move us forward</h1>
+              <p>Read practical ideas from the community, or share your own next-level lesson.</p>
             </div>
-            <div id="blogStatus" class="success-message" aria-live="polite"></div>
+            <button id="openBlogEditor" class="blog-compose-button" type="button" aria-expanded="false" aria-controls="blogForm">
+              <span aria-hidden="true">+</span><span>Write a blog</span>
+            </button>
           </div>
+          <div id="blogStatus" class="success-message" aria-live="polite"></div>
 
-          <form id="blogForm" class="task-form">
-            <input type="text" id="blogTitle" placeholder="Blog title" required />
-            <textarea id="blogDescription" placeholder="Write your blog here" rows="4"></textarea>
-            <button type="submit" class="cta-button">Publish Blog</button>
+          <form id="blogForm" class="blog-form" hidden>
+            <div class="blog-form-heading">
+              <div>
+                <p class="eyebrow">New post</p>
+                <h2>Write your blog</h2>
+              </div>
+              <button id="closeBlogEditor" class="blog-close-button" type="button" aria-label="Close blog editor">&times;</button>
+            </div>
+            <label for="blogTitle">Blog title</label>
+            <input type="text" id="blogTitle" placeholder="Give your story a clear title" required maxlength="120" />
+            <label for="blogDescription">Your blog</label>
+            <textarea id="blogDescription" placeholder="Share an insight, lesson, or idea with the community…" rows="7" required maxlength="5000"></textarea>
+            <div class="blog-form-actions">
+              <button id="cancelBlogEditor" type="button" class="blog-cancel-button">Cancel</button>
+              <button type="submit" class="cta-button">Publish blog</button>
+            </div>
           </form>
 
-          <div id="blogList" class="task-list"></div>
+          <div class="blog-feed-heading"><h2>Latest blogs</h2><span>Community feed</span></div>
+          <div id="blogList" class="blog-list"></div>
         </section>
       </main>
     </div>

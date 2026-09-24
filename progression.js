@@ -64,15 +64,6 @@
   const completeTask = async (taskId, userId) => {
     if (!window.supabaseClient || !taskId || !userId) return awardTaskXp(userId);
 
-    // Backfill a profile for accounts created before the signup trigger was installed.
-    const fullName = localStorage.getItem('levelingUpUserName')?.trim();
-    if (fullName) {
-      const { error: profileError } = await window.supabaseClient
-        .from('profiles')
-        .upsert({ user_id: userId, full_name: fullName }, { onConflict: 'user_id' });
-      if (profileError) console.warn('Could not sync the leaderboard name:', profileError);
-    }
-
     const { data: totalXp, error } = await window.supabaseClient
       .rpc('complete_task_and_award_xp', { p_task_id: taskId });
 

@@ -714,14 +714,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       .getPublicUrl(photoPath);
 
     const avatarUrl = `${publicUrlData.publicUrl}?v=${Date.now()}`;
-    const { error: profileError } = await window.supabaseClient.from('profiles').upsert({
-      user_id: user.id,
-      avatar_url: avatarUrl
-    }, { onConflict: 'user_id' });
+    const { data: profileData, error: profileError } = await window.supabaseClient
+      .from('profiles')
+      .update({ avatar_url: avatarUrl, updated_at: new Date().toISOString() })
+      .eq('user_id', user.id)
+      .select('avatar_url')
+      .maybeSingle();
 
-    if (profileError) throw profileError;
+    if (profileError || !profileData) throw new Error('Your profile is not ready. Please sign out and sign in again, then retry.');
 
-    return avatarUrl;
+    return profileData.avatar_url;
   };
 
   profilePhotoBtn?.addEventListener('click', openProfilePhotoPicker);

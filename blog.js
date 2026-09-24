@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const blogDescription = document.getElementById('blogDescription');
   const blogList = document.getElementById('blogList');
   const blogStatus = document.getElementById('blogStatus');
+  const openBlogEditor = document.getElementById('openBlogEditor');
+  const closeBlogEditor = document.getElementById('closeBlogEditor');
+  const cancelBlogEditor = document.getElementById('cancelBlogEditor');
   const BLOG_TABLE = 'blogs';
 
   let blogPosts = [];
@@ -24,6 +27,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       blogStatus.classList.remove('error-message');
     }, 2800);
   };
+
+  const setEditorOpen = (isOpen) => {
+    blogForm.hidden = !isOpen;
+    openBlogEditor.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) window.setTimeout(() => blogTitle.focus(), 0);
+  };
+
+  openBlogEditor?.addEventListener('click', () => setEditorOpen(true));
+  closeBlogEditor?.addEventListener('click', () => setEditorOpen(false));
+  cancelBlogEditor?.addEventListener('click', () => {
+    blogForm.reset();
+    setEditorOpen(false);
+  });
 
   const loadLocalBlogs = () => {
     blogPosts = JSON.parse(localStorage.getItem('levelingUpBlogs') || '[]');
@@ -58,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div>
               <h3>${escapeHtml(post.title)}</h3>
               <p>${escapeHtml(post.description || post.content)}</p>
-              <small>Written by ${escapeHtml(getAuthorName(post))}</small>
+              <small>By ${escapeHtml(getAuthorName(post))}${post.created_at ? ` · ${new Date(post.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}` : ''}</small>
             </div>
             <div class="blog-actions">
               <button class="task-done blog-like" data-index="${index}">Like ${post.likes || 0}</button>
@@ -156,6 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     blogForm.reset();
+    setEditorOpen(false);
     renderBlogs();
     showStatus('Blog published successfully.');
   });

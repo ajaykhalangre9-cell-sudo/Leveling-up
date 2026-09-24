@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leveling-up-v51';
+const CACHE_NAME = 'leveling-up-v52';
 const APP_SHELL = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const APP_SHELL = [
   './signup.js',
   './dashboard.html',
   './dashboard.js',
+  './account-controls.js',
   './website-chat.js',
   './chess.html',
   './chess.js',

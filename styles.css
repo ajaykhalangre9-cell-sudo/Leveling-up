@@ -661,28 +661,27 @@ h1 {
 }
 
 .ajay-orb-button {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
   border: 1px solid rgba(110, 231, 249, 0.42);
-  border-radius: 50%;
+  border-radius: 14px;
   padding: 0;
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #020617;
+  background-color: #020617;
+  background-image: url("assets/help/help-guide-character.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: pointer;
   box-shadow: 0 0 0 3px rgba(110, 231, 249, 0.1), 0 0 22px rgba(110, 231, 249, 0.34);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .ajay-orb-button img {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: 49% 20%;
-  transform: scale(1.45);
+  display: none;
 }
 
 .ajay-orb-button:hover {
@@ -1321,6 +1320,44 @@ h1 {
 }
 
 .leaderboard-modal.open { display: grid; }
+
+.account-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: none;
+  place-items: center;
+  padding: 16px;
+  background: rgba(2, 6, 23, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.account-modal.open { display: grid; }
+.account-modal-card {
+  width: min(460px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: clamp(18px, 4vw, 26px);
+  border: 1px solid rgba(110, 231, 249, 0.3);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.99), rgba(8, 15, 29, 0.99));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+}
+
+.account-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.account-modal-head h2 { margin: 0; font-size: clamp(1.35rem, 5vw, 1.7rem); }
+.account-modal-copy { margin: 12px 0 20px; color: var(--muted); line-height: 1.55; }
+.account-form { display: grid; gap: 8px; }
+.account-form[hidden] { display: none; }
+.account-form label { margin-top: 4px; color: #cbd5e1; font-size: .86rem; font-weight: 700; }
+.account-form input { width: 100%; min-width: 0; min-height: 46px; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 11px 13px; background: rgba(255,255,255,.06); color: var(--text); font: inherit; }
+.account-form input:focus { outline: 3px solid rgba(110,231,249,.17); border-color: rgba(110,231,249,.66); }
+.account-password-hint { margin: 4px 0 2px; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+.account-form-actions { display: flex; justify-content: flex-end; margin-top: 10px; }
+.account-form-actions .cta-button:disabled { cursor: wait; opacity: .72; }
+.account-form-status { min-height: 1.35em; margin: 14px 0 0; font-weight: 700; line-height: 1.45; }
+.account-form-status.is-success { color: #86efac; }
+.account-form-status.is-error { color: #fca5a5; }
 
 .leaderboard-modal-card {
   width: min(760px, 100%);
@@ -2626,6 +2663,47 @@ h1 {
   align-items: flex-start;
 }
 
+/* Community blog feed and editor */
+.back-btn {
+  width: auto;
+  min-width: 0;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.back-btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
+.back-btn span { display: inline-block; }
+.blog-card { width: min(860px, 100%); }
+.blog-hero { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.blog-hero h1 { max-width: 620px; }
+.blog-hero p:last-child { max-width: 600px; margin: 10px 0 0; color: var(--muted); line-height: 1.6; }
+.blog-compose-button { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 14px; border: 1px solid rgba(110,231,249,.52); border-radius: 14px; background: linear-gradient(135deg, rgba(110,231,249,.22), rgba(139,92,246,.24)); color: var(--text); cursor: pointer; font: inherit; font-weight: 800; box-shadow: 0 10px 24px rgba(34,211,238,.12); transition: transform 180ms ease, box-shadow 180ms ease; white-space: nowrap; }
+.blog-compose-button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(34,211,238,.22); }
+.blog-compose-button > span:first-child { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.18); font-size: 1.25rem; line-height: 1; }
+.blog-form { display: grid; gap: 9px; margin: 20px 0 26px; padding: clamp(16px, 3vw, 22px); border: 1px solid rgba(110,231,249,.26); border-radius: 18px; background: linear-gradient(145deg, rgba(14,116,144,.12), rgba(139,92,246,.12)); }
+.blog-form[hidden] { display: none; }
+.blog-form-heading, .blog-form-actions, .blog-feed-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.blog-form-heading h2, .blog-form-heading .eyebrow, .blog-feed-heading h2 { margin: 0; }
+.blog-form label { margin-top: 5px; color: #cbd5e1; font-size: .84rem; font-weight: 700; }
+.blog-form input, .blog-form textarea { width: 100%; min-width: 0; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 12px 14px; background: rgba(2,6,23,.28); color: var(--text); font: inherit; }
+.blog-form textarea { resize: vertical; line-height: 1.6; }
+.blog-form input:focus, .blog-form textarea:focus { outline: 3px solid rgba(110,231,249,.18); border-color: rgba(110,231,249,.65); }
+.blog-close-button, .blog-cancel-button { border: 1px solid rgba(255,255,255,.15); border-radius: 10px; background: rgba(255,255,255,.07); color: var(--text); cursor: pointer; font: inherit; font-weight: 700; }
+.blog-close-button { width: 34px; height: 34px; font-size: 1.45rem; line-height: 1; }
+.blog-cancel-button { min-height: 44px; padding: 10px 14px; }
+.blog-form-actions { justify-content: flex-end; margin-top: 6px; }
+.blog-feed-heading { margin: 4px 0 12px; }
+.blog-feed-heading h2 { font-size: 1.1rem; }
+.blog-feed-heading span { color: var(--muted); font-size: .78rem; font-weight: 700; }
+.blog-list { display: grid; gap: 12px; }
+.blog-list .blog-item { padding: 18px; border-color: rgba(255,255,255,.1); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.025)); transition: transform 180ms ease, border-color 180ms ease; }
+.blog-list .blog-item:hover { transform: translateY(-2px); border-color: rgba(110,231,249,.34); }
+.blog-list .blog-item h3 { font-size: 1.12rem; }
+.blog-list .blog-item p { line-height: 1.62; }
+
 .empty-state {
   color: var(--muted);
   text-align: center;
@@ -2829,6 +2907,11 @@ body.light-theme .settings-btn {
   color: #0f172a;
   box-shadow: 0 8px 20px rgba(8, 145, 178, 0.12);
 }
+
+body.light-theme .blog-form { background: linear-gradient(145deg, rgba(14,116,144,.08), rgba(139,92,246,.08)); }
+body.light-theme .blog-form input,
+body.light-theme .blog-form textarea { background: rgba(255,255,255,.75); border-color: rgba(15,23,42,.16); }
+body.light-theme .blog-list .blog-item { background: rgba(248,250,252,.9); border-color: rgba(15,23,42,.1); }
 
 body.light-theme .settings-panel {
   border-color: rgba(15, 23, 42, 0.1);
@@ -3182,6 +3265,17 @@ body.light-theme .chess-win-modal > div {
     align-items: flex-start;
   }
 
+  .back-btn {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  .back-btn span { display: none; }
+
   .brand-actions {
     align-items: flex-start;
   }
@@ -3219,9 +3313,10 @@ body.light-theme .chess-win-modal > div {
   }
 
   .ajay-orb-button {
-    width: 42px;
-    height: 42px;
-    flex-basis: 42px;
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    background-size: contain;
   }
 
   .ajay-panel {
@@ -3414,6 +3509,11 @@ body.light-theme .chess-win-modal > div {
     white-space: normal;
     text-align: center;
   }
+
+  .blog-hero { align-items: stretch; flex-direction: column; gap: 16px; padding-bottom: 18px; }
+  .blog-compose-button { width: 100%; }
+  .blog-form-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .blog-form-actions .cta-button { width: 100%; padding-left: 10px; padding-right: 10px; }
 
   .product-gallery {
     grid-template-columns: 1fr;

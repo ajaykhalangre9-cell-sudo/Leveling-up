@@ -39,8 +39,8 @@
 
           <div class="settings-panel" id="settingsPanel">
             <button class="panel-btn" id="themeToggle">Switch to Light Theme</button>
-            <button class="panel-btn" id="changeNameBtn" type="button" onclick="window.levelingUpAccountControls.changeName(event)">Change Name</button>
-            <button class="panel-btn" id="changePasswordBtn" type="button" onclick="window.levelingUpAccountControls.changePassword(event)">Change Password</button>
+            <button class="panel-btn" id="changeNameBtn" type="button">Change Name</button>
+            <button class="panel-btn" id="changePasswordBtn" type="button">Change Password</button>
             <button class="panel-btn" id="contactBtn">Contact Me</button>
             <div class="contact-panel" id="contactPanel">
               <a href="mailto:levelingup816@gmail.com">levelingup816@gmail.com</a>
@@ -195,10 +195,14 @@
           <h2 id="upcomingFeaturesTitle">Our upcoming features &amp; products</h2>
           <p>We are building more ways to support your personal growth.</p>
           <ul class="upcoming-feature-list" aria-label="Upcoming features">
-            <li>Website help chat</li>
-            <li>Analysis graphs</li>
-            <li>Strikes</li>
-            <li>Leveling system</li>
+            <li>Focus mode</li>
+            <li>Ajay agent</li>
+            <li>Physical games</li>
+            <li>Calendar</li>
+            <li>Penalty system</li>
+            <li>Monthly user-progress report</li>
+            <li>Digital wellbeing</li>
+            <li>Shareable badges</li>
             <li>Startup Stories</li>
             <li>Personalized advice</li>
             <li>Learning collaborations</li>
@@ -247,6 +251,32 @@
         <div class="leaderboard-list" id="leaderboardList" aria-live="polite">
           <p class="leaderboard-status">Loading leaderboard…</p>
         </div>
+      </div>
+    </section>
+
+    <section class="account-modal" id="accountModal" aria-hidden="true" aria-labelledby="accountModalTitle" role="dialog" aria-modal="true">
+      <div class="account-modal-card">
+        <div class="account-modal-head">
+          <div><p class="eyebrow" id="accountModalEyebrow">Account</p><h2 id="accountModalTitle">Account settings</h2></div>
+          <button class="modal-close" id="accountModalClose" type="button" aria-label="Close">&times;</button>
+        </div>
+        <p class="account-modal-copy" id="accountModalCopy"></p>
+        <form id="changeNameForm" class="account-form" hidden>
+          <label for="accountNewName">Your name</label>
+          <input id="accountNewName" type="text" minlength="2" maxlength="80" autocomplete="name" required />
+          <div class="account-form-actions"><button type="submit" class="cta-button">Save name</button></div>
+        </form>
+        <form id="changePasswordForm" class="account-form" hidden>
+          <label for="accountCurrentPassword">Current password</label>
+          <input id="accountCurrentPassword" type="password" autocomplete="current-password" required />
+          <label for="accountNewPassword">New password</label>
+          <input id="accountNewPassword" type="password" autocomplete="new-password" minlength="8" required />
+          <label for="accountConfirmPassword">Confirm new password</label>
+          <input id="accountConfirmPassword" type="password" autocomplete="new-password" minlength="8" required />
+          <p class="account-password-hint">Use at least 8 characters, including upper and lower case letters and a number.</p>
+          <div class="account-form-actions"><button id="changePasswordSubmit" type="submit" class="cta-button">Change password</button></div>
+        </form>
+        <p class="account-form-status" id="accountFormStatus" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -299,75 +329,12 @@
     <script src="progression.js?v=20260819-daily-leaderboard"></script>
     <script src="website-chat.js?v=20260919-help-chat"></script>
     <script src="dashboard.js?v=20260924-account-controls"></script>
-
-    <script>
-      // Account controls live in the page, not the large dashboard bundle. This
-      // keeps them working if a cached bundle or another dashboard feature fails.
-      window.levelingUpAccountControls = {
-        async changeName(event) {
-          event.stopImmediatePropagation();
-          const currentName = localStorage.getItem('levelingUpUserName') || 'User';
-          const newName = prompt('Enter your new name:', currentName)?.trim();
-          if (!newName) return;
-
-          try {
-            const client = window.supabaseClient;
-            if (client) {
-              const { data: { user }, error: userError } = await client.auth.getUser();
-              if (userError) throw userError;
-              if (!user) throw new Error('Your session has expired. Please sign in again.');
-              const { error } = await client.from('profiles').upsert({
-                user_id: user.id,
-                full_name: newName
-              }, { onConflict: 'user_id' });
-              if (error) throw error;
-            }
-
-            localStorage.setItem('levelingUpUserName', newName);
-            const name = document.getElementById('userName');
-            const welcome = document.getElementById('welcomeMessage');
-            const initial = document.getElementById('profilePhotoInitial');
-            if (name) name.textContent = newName;
-            if (welcome) welcome.textContent = `Welcome back, ${newName}`;
-            if (initial) initial.textContent = newName.charAt(0).toUpperCase();
-            alert('Your name has been changed.');
-          } catch (error) {
-            alert(error.message || 'Unable to change your name. Please try again.');
-          }
-        },
-
-        async changePassword(event) {
-          event.stopImmediatePropagation();
-          const newPassword = prompt('Enter a new password (at least 6 characters):');
-          if (newPassword === null) return;
-          if (newPassword.length < 6) {
-            alert('Your new password must be at least 6 characters long.');
-            return;
-          }
-          const confirmation = prompt('Confirm your new password:');
-          if (confirmation === null) return;
-          if (newPassword !== confirmation) {
-            alert('The passwords do not match. Please try again.');
-            return;
-          }
-
-          try {
-            const client = window.supabaseClient;
-            if (!client) throw new Error('Password changes require an active connection. Please try again when you are online.');
-            const { error } = await client.auth.updateUser({ password: newPassword });
-            if (error) throw error;
-            alert('Your password has been changed.');
-          } catch (error) {
-            alert(error.message || 'Unable to change your password. Please sign in again and retry.');
-          }
-        }
-      };
-    </script>
+    <script src="account-controls.js?v=20260924-secure-account-controls"></script>
 
 <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js?v=20260924-account-controls');
+          navigator.serviceWorker.register('./sw.js?v=20260924-secure-account-controls');
         });
       }
     </script>
